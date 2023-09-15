@@ -40,9 +40,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_170316) do
   end
 
   create_table "comments", charset: "utf8", force: :cascade do |t|
-    t.text "text"
-    t.bigint "user_id"
-    t.bigint "prototype_id"
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.bigint "prototype_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["prototype_id"], name: "index_comments_on_prototype_id"
@@ -50,12 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_14_170316) do
   end
 
   create_table "prototypes", charset: "utf8", force: :cascade do |t|
-    t.string "title"
-    t.text "catch_copy"
-    t.text "concept"
+    t.string "title", null: false
+    t.text "catch_copy", null: false
+    t.text "concept", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_prototypes_on_user_id"
   end
 
